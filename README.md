@@ -54,14 +54,14 @@ The car is found to be stayed inside its lane in most time.
 The car changed its lane when there is a slower car in front of about 30m, or return back to the middle lane for relaxing the chance of lane changing .
 
 ### Reflection
-#### There is a reflection on how to generate paths.#
+#### There is a reflection on how to generate paths.
 *(The code model for generating paths is described in detail. This can be part of the README or a separate doc labeled "Model Documentation".)*
 
 The code is described in details in the src/main.cpp. The code model is  implemented basing on the "Project Walkthrough and Q&A" classroom, and by the three steps as follows.
 
 ##### 1.Peripheral Environment Prediction (lines 261-295)
 
-  The sensor fusion data (d, s) are used to detect the lane and other cars around the target car in the distance of 30m (suggested in ).
+  The sensor fusion data (d, s) are used to detect the lane and other cars around the target car in the distance of 30m (suggested in the classroom).
 
   (1) In the running lane, if there is a car in the front of the target car.   
 
