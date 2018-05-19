@@ -15,56 +15,62 @@ The goal of this project is to safely navigate around a virtual highway with oth
 
 ### Valid Trajectories
 #### *1. The car is able to drive at least 4.32 miles without incident.*
-*The top right screen of the simulator shows the current/best miles driven without incident. Incidents include exceeding acceleration/jerk/speed, collision, and driving outside of the lanes. Each incident case is also listed below in more detail.*
+*(The top right screen of the simulator shows the current/best miles driven without incident. Incidents include exceeding acceleration/jerk/speed, collision, and driving outside of the lanes. Each incident case is also listed below in more detail.)*
 
 The car has driven for about 5, 10 miles and changing lane without incident as shown in below figures.
 
-###### Driving for 5 miles
+#### Driving for 5 miles
 ![alt text][image1]
 
-###### Driving for 10 miles
+#### Driving for 10 miles
 ![alt text][image2]
 
-###### Driving for changing lane
+#### Driving for changing lane
 ![alt text][image3]
 
 #### *2. The car drives according to the speed limit.*
-*The car doesn't drive faster than the speed limit. Also the car isn't driving much slower than speed limit unless obstructed by traffic.*
-The speed of car is limited at 49.5km/h (code main.cpp, lines:213,314). No overspeed message was found from the simulation.  
+*(The car doesn't drive faster than the speed limit. Also the car isn't driving much slower than speed limit unless obstructed by traffic.)*
+
+The speed of car is limited at 49.5km/h (code main.cpp, lines:213,314). No overspeed message was found during the simulation.  
 
 #### *3. Max Acceleration and Jerk are not Exceeded.*
-*The car does not exceed a total acceleration of 10 m/s^2 and a jerk of 10 m/s^3.*
-No over max Acceleration and Jerk message was  found from the simulation
+*(The car does not exceed a total acceleration of 10 m/s^2 and a jerk of 10 m/s^3)*
+
+No over max Acceleration and Jerk message was found during the simulation
 
 #### *4. Car does not have collisions.*
-*The car must not come into contact with any of the other cars on the road.*
+*(The car must not come into contact with any of the other cars on the road.)*
 
-There was no collisions.
+The car did not have collisions for driving of 10 miles.
 
 #### *5. The car stays in its lane, except for the time between changing lanes.*
-*The car doesn't spend more than a 3 second length out side the lane lanes during changing lanes, and every other time the car stays inside one of the 3 lanes on the right hand side of the road.*
+*(The car doesn't spend more than a 3 second length out side the lane lanes during changing lanes, and every other time the car stays inside one of the 3 lanes on the right hand side of the road.)*
 
-The car is found to be stayed in its lane in most time.   
+The car is found to be stayed inside its lane in most time.   
 
 #### *6. The car is able to change lanes*
-*The car is able to smoothly change lanes when it makes sense to do so, such as when behind a slower moving car and an adjacent lane is clear of other traffic.*
+*(The car is able to smoothly change lanes when it makes sense to do so, such as when behind a slower moving car and an adjacent lane is clear of other traffic.)*
 
-The car changed its lane when there is a slower car in front of about 30m, or return back to the middle lane for safety.
+The car changed its lane when there is a slower car in front of about 30m, or return back to the middle lane for relaxing the chance of lane changing .
 
 ### Reflection
 #### There is a reflection on how to generate paths.#
-*The code model for generating paths is described in detail. This can be part of the README or a separate doc labeled "Model Documentation".*
+*(The code model for generating paths is described in detail. This can be part of the README or a separate doc labeled "Model Documentation".)*
 
-The code is described in details in the src/main.cpp. The model is  implemented basing on the "Project Walkthrough and Q&A" classroom, and by three steps as follows.
+The code is described in details in the src/main.cpp. The code model is  implemented basing on the "Project Walkthrough and Q&A" classroom, and by the three steps as follows.
 
 ##### 1.Peripheral Environment Prediction (lines 261-295)
+
   The sensor fusion data (d, s) are used to detect the lane and other cars around the target car in the distance of 30m (suggested in ).
 
   (1) In the running lane, if there is a car in the front of the target car.   
+
   (2) In the left lane, if there is a car in the front and behind of the target car.     
+
   (3) In the left lane, if there is a car in the front and behind of the target car.  
 
 ##### 2.Car Behavior Planning (lines 296-315)
+
    Basing the above peripheral prediction information, the target car are planned
 
    (1) to change its lane to the available left or right lane and retain its speed when there is a car in front.
@@ -79,11 +85,6 @@ The code is described in details in the src/main.cpp. The model is  implemented 
 
   The path are generated under spline implementation. Then the position on 30m ahead are calculated for car running.   
 
-
-### Suggestions to Make Your Project Stand Out!
-*Create a path planner that performs optimized lane changing, this means that the car only changes into a lane that improves its forward progress.*
-
-*Incorporate a controller such as PID or MPC that follows the Path Planner's output path. Note that since the output path contains not only desired location information but also the car's desired speed as varying spaced points. One idea is to extract the desired speed from the path and then feed that into the controller. Another idea is if working with an MPC is to change the cost function so instead of evaluating cost relative to how close you are to a path, instead evaluate by how close the car is to one of the associating points of the path's output.*
 
 
 ---
