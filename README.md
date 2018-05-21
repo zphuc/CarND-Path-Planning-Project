@@ -31,7 +31,7 @@ The car has driven for about 5, 10 miles and changing lane without incident as s
 #### *2. The car drives according to the speed limit.*
 *(The car doesn't drive faster than the speed limit. Also the car isn't driving much slower than speed limit unless obstructed by traffic.)*
 
-The speed of car is limited at 49.5km/h (code main.cpp, lines:213,314). No overspeed message was found during the simulation.  
+The speed of car is limited at 49.5km/h (code main.cpp, lines:213,312). No overspeed message was found during the simulation.  
 
 #### *3. Max Acceleration and Jerk are not Exceeded.*
 *(The car does not exceed a total acceleration of 10 m/s^2 and a jerk of 10 m/s^3)*
@@ -71,7 +71,7 @@ The code is described in details in the src/main.cpp. The code model is  impleme
 
 ##### 2.Behavior Planning (lines 296-315)
 
-   Basing the above peripheral prediction information, the ego car are planned
+   Basing the above peripheral prediction information, the ego car are manually planned
 
    (1) to change its lane to the available left or right lane and retain its speed when there is a car in front.
 

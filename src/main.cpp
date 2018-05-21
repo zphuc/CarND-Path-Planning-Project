@@ -271,7 +271,7 @@ int main() {
             // Prediction : Analysing other cars positions.
             bool car_frnt = false;
             bool car_left = false;
-            bool car_righ = false;
+            bool car_right = false;
             for ( int i = 0; i < sensor_fusion.size(); i++ ) {
               float d = sensor_fusion[i][6];
               int ilane = (int) (d/D_DD);
@@ -284,22 +284,22 @@ int main() {
                 // Estimate car s position after executing previous trajectory.
                 check_car_s += ((double)prev_size*D_DT*check_speed);
                 
-                if ( ilane == car_lane ) { // Car in its lane.
+                if ( ilane == car_lane ) { // A car in its lane.
                    if ((car_s < check_car_s) && (car_s + D_DS > check_car_s))        car_frnt = true;
-                } else if ( ilane == car_lane -1 ) { // Car left lane
+                } else if ( ilane == car_lane -1 ) { // A car in left lane
                    if ((car_s - D_DS < check_car_s) && (car_s + D_DS > check_car_s)) car_left = true;
-                } else if ( ilane == car_lane + 1 ) { // Car right lane
-                   if ((car_s - D_DS < check_car_s) && (car_s + D_DS > check_car_s)) car_righ = true;
+                } else if ( ilane == car_lane + 1 ) { // A car in right lane
+                   if ((car_s - D_DS < check_car_s) && (car_s + D_DS > check_car_s)) car_right = true;
                 }
               }
             }
 /////////////////////////////////////////////////
-// Car Behavior Planning
+// Behavior Planning
             if ( car_frnt ) { // there is a car in front
               if ( !car_left && car_lane > ID_MIN_LANE ) {
                 // there is no car in left and the left lane is available.
                 car_lane--; // Change lane left.
-              } else if ( !car_righ && car_lane < ID_MAX_LANE ){
+              } else if ( !car_right && car_lane < ID_MAX_LANE ){
                 // there is no car in right and the right lane is available.
                 car_lane++; // Change lane right.
               } else { // too_close 
@@ -307,14 +307,14 @@ int main() {
               }
             } else {
               if ( car_lane > ID_MID_LANE && !car_left )     car_lane--;
-              else if ( car_lane < ID_MID_LANE && !car_righ) car_lane++;
+              else if ( car_lane < ID_MID_LANE && !car_right) car_lane++;
               if ( ref_vel < MAX_SPEED ) {
                 ref_vel = min(ref_vel + D_SPEED, MAX_SPEED);
               }
             }
 
 /////////////////////////////////////////////////
-// Path Generation
+// Trajectory Generation
             vector<double> ptsx;
             vector<double> ptsy;
 
