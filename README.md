@@ -61,17 +61,17 @@ The code is described in details in the src/main.cpp. The code model is  impleme
 
 ##### 1.Peripheral Environment Prediction (lines 261-295)
 
-  The sensor fusion data (d, s) are used to detect the lane and other cars around the target car in the distance of 30m (suggested in the classroom).
+  The sensor fusion data (d, s) are used to detect the lane and other cars around the ego car in the distance of 30m (suggested in the classroom).
 
-  (1) In the running lane, if there is a car in the front of the target car.   
+  (1) In the running lane, if there is a car in the front of the ego car.   
 
-  (2) In the left lane, if there is a car in the front and behind of the target car.     
+  (2) In the left lane, if there is a car in the front and behind of the ego car.     
 
-  (3) In the left lane, if there is a car in the front and behind of the target car.  
+  (3) In the left lane, if there is a car in the front and behind of the ego car.  
 
-##### 2.Car Behavior Planning (lines 296-315)
+##### 2.Behavior Planning (lines 296-315)
 
-   Basing the above peripheral prediction information, the target car are planned
+   Basing the above peripheral prediction information, the ego car are planned
 
    (1) to change its lane to the available left or right lane and retain its speed when there is a car in front.
 
@@ -79,11 +79,11 @@ The code is described in details in the src/main.cpp. The code model is  impleme
 
    (3) to return back to the middle lane to increase the chance of lane changing, and/ or increase the car speed to relax the traffic.
 
-##### 3. Path Generation (lines 316-412)
+##### 3. Trajectory Generation (lines 316-412)
 
-  Refer to the "Project Walkthrough and Q&A" classroom, the last two points of the previous path (lines 325-350) and the three points at further distance of 30m, 60m, 90m with its lane (lines 351-363) are used to generate path of the target car. The coordinates are transformed to the local car coordinates.
+  Refer to the "Project Walkthrough and Q&A" classroom, the last two points of the previous path (lines 325-350) and the three points at further distance of 30m, 60m, 90m with its lane (lines 351-363) are used to generate trajectory of the ego car. The coordinates are transformed to the local car coordinates.
 
-  The path are generated under spline implementation. Then the position on 30m ahead are calculated for car running.   
+  The trajectory is generated under spline implementation. Then the position on 30m ahead are calculated for car running.   
 
 
 
